@@ -1,0 +1,18 @@
+
+Installation of SOAPdenovo-Trans1.04
+
+********************************************************************
+
+Pre-configurated Makefile was designed to handle most circumstances.
+
+************
+MAKE
+************
+
+Type "sh make.sh" at root of unpacked folder.
+
+************
+CLEAN
+************
+
+Type "sh clean.sh" at root of unpacked folder.

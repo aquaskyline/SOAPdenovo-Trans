@@ -1,0 +1,5 @@
+1.04 | 2014-04-22 15:00:00 +0800 (Tue, 22 Apr 2014)Fixes a number of 'seqmentation fault' errors on different kinds of data.
+(Thanks for Chris Boursnell (twitter: @chrisboursnell) fixing the bugs.)
+
+1.03 | 2013-07-19 12:00:00 +0800 (Fri, 19 Jul 2013)
+Add the function: calculate RPKM (Reads per Kilobase of assembled transcripts per Million mapped reads).
