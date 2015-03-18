@@ -1,6 +1,6 @@
 * Manual of SOAPdenovo-Trans-v1.04
 
-*** Introduction
+** Introduction
 
 SOAPdenovo-Trans is a de novo transcriptome assembler basing on the SOAPdenovo framework, adapt to alternative splicing and different expression level among transcripts.The assembler provides a more accurate, complete and faster way to construct the full-length transcript sets.
 
