@@ -1,14 +1,14 @@
-* Manual of SOAPdenovo-Trans-v1.04
+# Manual of SOAPdenovo-Trans
 
-** Introduction
+## Introduction
 
 SOAPdenovo-Trans is a de novo transcriptome assembler basing on the SOAPdenovo framework, adapt to alternative splicing and different expression level among transcripts.The assembler provides a more accurate, complete and faster way to construct the full-length transcript sets.
 
-** System Requirement
+## System Requirement
 
 SOAPdenovo-Trans aims for the transcript assembly. It runs on 64-bit Linux systems. For animal transcriptomes like mouse, about 30-35GB memory would be required.
 
-** Update Log
+## Update Log
 1.04 | 2014-04-22 15:00:00 +0800 (Tue, 22 Apr 2014)
 Fixes a number of 'seqmentation fault' errors on different kinds of data.
 (Thanks for Chris Boursnell (twitter: @chrisboursnell) fixing the bugs.)
@@ -16,14 +16,14 @@ Fixes a number of 'seqmentation fault' errors on different kinds of data.
 1.03 | 2013-07-19 12:00:00 +0800 (Fri, 19 Jul 2013)
 Add the function: calculate RPKM (Reads per Kilobase of assembled transcripts per Million mapped reads).
 
-** Installation
+## Installation
 
 1. You can download the pre-compiled binary according to your platform, unpack and execute directly.
 2. Or download the source code, unpack to ${destination folder} with the method above, and compile by using GNU make with command "sh make.sh" at ${destination folder} and generate the executable files "SOAPdenovo-Trans-31mer" and "SOAPdenovo-Trans-127mer".
 
-** How to use it
+## How to use it
 
-*** 1. Configuration file
+### 1. Configuration file
 The configuration file in SOAPdenovo-Trans is mostly the same as SOAPdenovo, but there is no "rank" parameter. The configuration file tells the assembler where to find these files and the relevant information. "example.config" demonstrates how to organize the information and make configuration file.
 
 The configuration file has a section for global information, and then multiple library sections. Right now only "max_rd_len" is included in the global information section. Any read longer than max_rd_len will be cut to this length. The library information and the information of sequencing data generated from the library should be organized in the corresponding library section. Each library section starts with tag [LIB] and includes the following items:
@@ -40,7 +40,7 @@ The assembler will cut the reads from the current library to this length.
 This takes effect in the "map" step and is the mininum alignment length between a read and a contig required for a reliable read location. The minimum length for paired-end reads and mate-pair reads is 32 and 35 respectively. The assembler accepts read file in three kinds of formats: FASTA, FASTQ and BAM. Mate-pair relationship could be indicated in two ways: two sequence files with reads in the same order belonging to a pair, or two adjacent reads in a single file (FASTA only) are belonging to a pair. In the configuration file single end files are indicated by "f=/path/filename" or "q=/path/filename" for fasta or fastq formats separately. Paired reads in two fasta sequence files are indicated by "f1=" and "f2=". While paired reads in two fastq sequences files are indicated by "q1=" and "q2=". Paired reads in a single fasta sequence file is indicated by "p=" item. Reads in bam sequence files is indicated by "b=". All the above items in each library section are optional. The assembler assigns default values for most of them. If you are not sure how to set a parameter, you can remove it from your configuration file.
 </pre>
 
-*** 2. Get it started
+### 2. Get it started
 Once the configuration file is available, the simplest way to run the assembler is:
 <pre>
 ./SOAPdenovo-Trans all -s config_file -o output_prefix
@@ -56,7 +56,7 @@ User can also choose to run the assembly process step by step as:
 
 NOTE: SOAPdenovo-Trans has two versions: SOAPdenovo-Trans-31mer and SOAPdenovo-Trans-127mer.
 
-*** 3. Options:
+### 3. Options:
 <pre>
 SOAPdenovo-Trans all -s configFile -o outputGraph [-R -f -S -F] [-K kmer -p n_cpu -d kmerFreqCutoff -e EdgeCovCutoff -M mergeLevel -L minContigLen -t locusMaxOutput -G gapLenDiff] 
 
@@ -77,13 +77,13 @@ SOAPdenovo-Trans all -s configFile -o outputGraph [-R -f -S -F] [-K kmer -p n_cp
 -G	<int>		gapLenDiff: allowed length difference between estimated and filled gap, [50]
 </pre>
 
-*** 4. Output files
+### 4. Output files
 These files are output as assembly results:
 *.contig contig sequence file
 *.scafSeq scaffold sequence file
 There are some other files that provide useful information for advanced users, which are listed in Appendix B.
 
-*** 5. Parameter adjustment
+### 5. Parameter adjustment
 <pre>
 -K:	
 The kmer value is always depended on data size and its transcript features. At the current stage, SOAPdenovo-Trans has two versions: 
@@ -114,7 +114,7 @@ Furthermore, the function will output two intermediate files: *. readInformation
 The parameter is optional. It is set to skip the step of constructing the scaffold and fill gap directly. It is used to try new methods of gap filling for developers. Or, if users have assembled the data with (or without) gap filling, they can get the assemblies rapidly without (or with) gap filling on the premise of keeping all the output files after scaffolding.
 </pre>
 
-* APPENDIX A: 	example.config 
+# APPENDIX A: 	example.config 
 
 <pre>
 #maximal read length
@@ -146,9 +146,9 @@ f=/path/**LIBNAMEA**/fasta_read_single.fa
 p=/path/**LIBNAMEA**/pairs_in_one_file.fa
 </pre>
 
-* APPENDIXA B:
+# APPENDIXA B:
 
-** 1. Output files from the command "pregraph"
+## 1. Output files from the command "pregraph"
 <pre>
 a. *.kmerFreq
 Each row shows the number of Kmers with a frequency equals the row number. Note that those peaks of frequencies which are the integral multiple of 63 are due to the data structure.
@@ -162,7 +162,7 @@ e. *.preGraphBasic
   Some basic information about the pre-graph: number of vertex, K value, number of edges, maximum read length etc.
 </pre>
 
-** 2. Output files from the command "contig"
+## 2. Output files from the command "contig"
 <pre>
 a. *.contig
   Contig information: corresponding edge index, length, kmer coverage, whether it's tip and the sequence. Either a contig or its reverse complementary counterpart is included. Each reverse complementary contig index is indicated in the *.ContigIndex file.
@@ -174,7 +174,7 @@ d. *.ContigIndex
   Each record gives information about each contig in the *.contig: it's edge index, length, the index difference between its reverse-complementary counterpart and itself.
 </pre>
 
-** 3. Output files from the command "map"
+## 3. Output files from the command "map"
 <pre>
 a. *.peGrads
   Information for each clone library: insert-size, read index upper bound, rank and pair number cutoff for a reliable link. This file can be revised manually for scaffolding tuning.
@@ -186,7 +186,7 @@ d. *. readInformation
   Reads' locations on contigs: read id, start position of read, contig id, start position of contig, the align length and orientation.
 </pre>
 
-** 4. Output files from the command "scaff"
+## 4. Output files from the command "scaff"
 <pre>
 a. *.newContigIndex
   Contigs are sorted according their length before scaffolding. Their new indexes are listed in this file.  This is useful if one wants to corresponds contigs in *.contig with those in *.links.
