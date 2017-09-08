@@ -38,8 +38,7 @@ static void pipeline (int argc, char **argv);
 
 int main (int argc, char **argv)
 {
-	printf ("\nThe version 1.03: released on July 19th, 2013\n");
-	printf ("With bug fixes by Chris Boursnell January 23rd, 2014\n\n");
+	printf ("\nVersion 1.04\n\n");
 	argc--;
 	argv++;
 
