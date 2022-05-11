@@ -36,6 +36,16 @@ static void display_usage ();
 static void display_all_usage ();
 static void pipeline (int argc, char **argv);
 
+#ifdef MER127
+Kmer kmerZero={0,0,0,0};
+#endif
+#ifdef MER63
+Kmer kmerZero={0,0};
+#endif
+#ifdef MER31
+Kmer kmerZero={0};
+#endif
+
 int main (int argc, char **argv)
 {
 	printf ("\nVersion 1.04\n\n");
