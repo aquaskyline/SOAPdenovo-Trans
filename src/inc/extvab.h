@@ -119,5 +119,5 @@ extern int delowArc;
 extern int SupportNum;
 extern int N_kmer;//mao 2011-10-13
 extern int read_trace;//mao 2011-10-21
-Kmer kmerZero;
+extern Kmer kmerZero;
 

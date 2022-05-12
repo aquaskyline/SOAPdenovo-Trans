@@ -115,13 +115,5 @@ int SupportNum=2;
 int N_kmer=0;//mao 2011-10-13
 int read_trace=0;//mao 2011-10-21
 
-#ifdef MER127
-Kmer kmerZero={0,0,0,0};
-#endif
-#ifdef MER63
-Kmer kmerZero={0,0};
-#endif
-#ifdef MER31
-Kmer kmerZero={0};
-#endif
+extern Kmer kmerZero;
 
